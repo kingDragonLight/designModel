@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿桌面</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <p class="container" id="container">
+        <!-- <p class="back" ondrop="drop(event)" ondragover="dragOver(event)">
+            <p id="box1" class="box" draggable="true" ondragstart="drag(event)"></p>
+        </p>
+        <p class="back" ondrop="drop(event)" ondragover="dragOver(event)">
+            <p id="box2" class="box" draggable="true" ondragstart="drag(event)"></p>
+        </p>
+        <p class="back" ondrop="drop(event)" ondragover="dragOver(event)">
+            <p id="box3" class="box" draggable="true" ondragstart="drag(event)"></p>
+        </p>
+        <p class="back" ondrop="drop(event)" ondragover="dragOver(event)">
+            <p id="box4" class="box" draggable="true" ondragstart="drag(event)"></p>
+        </p>
+        <p class="back" ondrop="drop(event)" ondragover="dragOver(event)">
+            <p id="box5" class="box" draggable="true" ondragstart="drag(event)"></p>
+        </p> -->
+    </p>
+
+    <script src="index.js"></script>
+</body>
+
+<script>
+
+    function dragOver(ev) {
+        ev.preventDefault();
+    }
+
+
+    function drag(ev) {
+        // console.log(ev.target.id)// 拖拽元素 id
+        ev.dataTransfer.setData("Text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        const className=ev.target.className;// 父原件class
+        console.log(className)
+        var data = ev.dataTransfer.getData("Text");//获取拖拽元素 id
+        if(className=='back'){
+            ev.target.appendChild(document.getElementById(data));
+        }
+    }
+
+</script>
+
+</html>
